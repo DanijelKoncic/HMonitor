@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HystoricalDBModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="HystoricalDBModelStoreContainer">
+    <EntitySet Name="Sensor" EntityType="HystoricalDBModel.Store.Sensor" store:Type="Tables" />
+    <EntitySet Name="SensorGroup" EntityType="HystoricalDBModel.Store.SensorGroup" store:Type="Tables" />
+    <EntitySet Name="SensorHistoryData" EntityType="HystoricalDBModel.Store.SensorHistoryData" store:Type="Tables" />
+    <AssociationSet Name="FK_Sensor_SensorGroup" Association="HystoricalDBModel.Store.FK_Sensor_SensorGroup">
+      <End Role="SensorGroup" EntitySet="SensorGroup" />
+      <End Role="Sensor" EntitySet="Sensor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SensorHistoryData_Sensor" Association="HystoricalDBModel.Store.FK_SensorHistoryData_Sensor">
+      <End Role="Sensor" EntitySet="Sensor" />
+      <End Role="SensorHistoryData" EntitySet="SensorHistoryData" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Sensor">
+    <Key>
+      <PropertyRef Name="SensorId" />
+    </Key>
+    <Property Name="SensorId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SensorGroupId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Dimension" Type="nvarchar" MaxLength="10" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="100" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="SensorGroup">
+    <Key>
+      <PropertyRef Name="SensorGroupId" />
+    </Key>
+    <Property Name="SensorGroupId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="100" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="SensorHistoryData">
+    <Key>
+      <PropertyRef Name="SensorHistoryDataId" />
+    </Key>
+    <Property Name="SensorHistoryDataId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SensorId" Type="int" />
+    <Property Name="DataText" Type="nvarchar" MaxLength="20" />
+    <Property Name="DataNumeric" Type="numeric" Precision="10" Scale="2" />
+    <Property Name="SampledDT" Type="datetime" />
+    <Property Name="InsertedDT" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_Sensor_SensorGroup">
+    <End Role="SensorGroup" Type="HystoricalDBModel.Store.SensorGroup" Multiplicity="0..1" />
+    <End Role="Sensor" Type="HystoricalDBModel.Store.Sensor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SensorGroup">
+        <PropertyRef Name="SensorGroupId" />
+      </Principal>
+      <Dependent Role="Sensor">
+        <PropertyRef Name="SensorGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SensorHistoryData_Sensor">
+    <End Role="Sensor" Type="HystoricalDBModel.Store.Sensor" Multiplicity="0..1" />
+    <End Role="SensorHistoryData" Type="HystoricalDBModel.Store.SensorHistoryData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sensor">
+        <PropertyRef Name="SensorId" />
+      </Principal>
+      <Dependent Role="SensorHistoryData">
+        <PropertyRef Name="SensorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

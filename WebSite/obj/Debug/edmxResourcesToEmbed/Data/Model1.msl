@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TestDBModelStoreContainer" CdmEntityContainer="TestDBEntities">
+    <EntitySetMapping Name="Sensor">
+      <EntityTypeMapping TypeName="TestDBModel.Sensor">
+        <MappingFragment StoreEntitySet="Sensor">
+          <ScalarProperty Name="SensorId" ColumnName="SensorId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SensorData">
+      <EntityTypeMapping TypeName="TestDBModel.SensorData">
+        <MappingFragment StoreEntitySet="SensorData">
+          <ScalarProperty Name="HistoryDataId" ColumnName="HistoryDataId" />
+          <ScalarProperty Name="SensorId" ColumnName="SensorId" />
+          <ScalarProperty Name="DataNumeric" ColumnName="DataNumeric" />
+          <ScalarProperty Name="DataText" ColumnName="DataText" />
+          <ScalarProperty Name="SampleDateTime" ColumnName="SampleDateTime" />
+          <ScalarProperty Name="EntryDateTime" ColumnName="EntryDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

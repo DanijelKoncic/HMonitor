@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HistoricalDBModelStoreContainer" CdmEntityContainer="HistoricalDBEntities">
+    <EntitySetMapping Name="Sensor">
+      <EntityTypeMapping TypeName="HistoricalDBModel.Sensor">
+        <MappingFragment StoreEntitySet="Sensor">
+          <ScalarProperty Name="SensorId" ColumnName="SensorId" />
+          <ScalarProperty Name="SensorGroupId" ColumnName="SensorGroupId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Dimension" ColumnName="Dimension" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SensorGroup">
+      <EntityTypeMapping TypeName="HistoricalDBModel.SensorGroup">
+        <MappingFragment StoreEntitySet="SensorGroup">
+          <ScalarProperty Name="SensorGroupId" ColumnName="SensorGroupId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SensorHistoryData">
+      <EntityTypeMapping TypeName="HistoricalDBModel.SensorHistoryData">
+        <MappingFragment StoreEntitySet="SensorHistoryData">
+          <ScalarProperty Name="SensorHistoryDataId" ColumnName="SensorHistoryDataId" />
+          <ScalarProperty Name="SensorId" ColumnName="SensorId" />
+          <ScalarProperty Name="DataText" ColumnName="DataText" />
+          <ScalarProperty Name="DataNumeric" ColumnName="DataNumeric" />
+          <ScalarProperty Name="SampledDT" ColumnName="SampledDT" />
+          <ScalarProperty Name="InsertedDT" ColumnName="InsertedDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

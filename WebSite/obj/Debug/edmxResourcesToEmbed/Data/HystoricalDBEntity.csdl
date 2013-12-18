@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HystoricalDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="HystoricalDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Sensor" EntityType="HystoricalDBModel.Sensor" />
+    <EntitySet Name="SensorGroup" EntityType="HystoricalDBModel.SensorGroup" />
+    <AssociationSet Name="FK_Sensor_SensorGroup" Association="HystoricalDBModel.FK_Sensor_SensorGroup">
+      <End Role="SensorGroup" EntitySet="SensorGroup" />
+      <End Role="Sensor" EntitySet="Sensor" />
+    </AssociationSet>
+    <EntitySet Name="SensorHistoryData" EntityType="HystoricalDBModel.SensorHistoryData" />
+    <AssociationSet Name="FK_SensorHistoryData_Sensor" Association="HystoricalDBModel.FK_SensorHistoryData_Sensor">
+      <End Role="Sensor" EntitySet="Sensor" />
+      <End Role="SensorHistoryData" EntitySet="SensorHistoryData" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Sensor">
+    <Key>
+      <PropertyRef Name="SensorId" />
+    </Key>
+    <Property Type="Int32" Name="SensorId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="SensorGroupId" />
+    <Property Type="String" Name="Name" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Dimension" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Comment" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="Active" />
+    <NavigationProperty Name="SensorGroup" Relationship="HystoricalDBModel.FK_Sensor_SensorGroup" FromRole="Sensor" ToRole="SensorGroup" />
+    <NavigationProperty Name="SensorHistoryData" Relationship="HystoricalDBModel.FK_SensorHistoryData_Sensor" FromRole="Sensor" ToRole="SensorHistoryData" />
+  </EntityType>
+  <EntityType Name="SensorGroup">
+    <Key>
+      <PropertyRef Name="SensorGroupId" />
+    </Key>
+    <Property Type="Int32" Name="SensorGroupId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Comment" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="Active" />
+    <NavigationProperty Name="Sensor" Relationship="HystoricalDBModel.FK_Sensor_SensorGroup" FromRole="SensorGroup" ToRole="Sensor" />
+  </EntityType>
+  <Association Name="FK_Sensor_SensorGroup">
+    <End Type="HystoricalDBModel.SensorGroup" Role="SensorGroup" Multiplicity="0..1" />
+    <End Type="HystoricalDBModel.Sensor" Role="Sensor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SensorGroup">
+        <PropertyRef Name="SensorGroupId" />
+      </Principal>
+      <Dependent Role="Sensor">
+        <PropertyRef Name="SensorGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SensorHistoryData">
+    <Key>
+      <PropertyRef Name="SensorHistoryDataId" />
+    </Key>
+    <Property Type="Int32" Name="SensorHistoryDataId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="SensorId" />
+    <Property Type="String" Name="DataText" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="DataNumeric" Precision="10" Scale="2" />
+    <Property Type="DateTime" Name="SampledDT" Precision="3" />
+    <Property Type="DateTime" Name="InsertedDT" Precision="3" />
+    <NavigationProperty Name="Sensor" Relationship="HystoricalDBModel.FK_SensorHistoryData_Sensor" FromRole="SensorHistoryData" ToRole="Sensor" />
+  </EntityType>
+  <Association Name="FK_SensorHistoryData_Sensor">
+    <End Type="HystoricalDBModel.Sensor" Role="Sensor" Multiplicity="0..1" />
+    <End Type="HystoricalDBModel.SensorHistoryData" Role="SensorHistoryData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sensor">
+        <PropertyRef Name="SensorId" />
+      </Principal>
+      <Dependent Role="SensorHistoryData">
+        <PropertyRef Name="SensorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

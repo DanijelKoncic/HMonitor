@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="TestDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Sensor" EntityType="TestDBModel.Sensor" />
+    <EntitySet Name="SensorData" EntityType="TestDBModel.SensorData" />
+  </EntityContainer>
+  <EntityType Name="Sensor">
+    <Key>
+      <PropertyRef Name="SensorId" />
+    </Key>
+    <Property Name="SensorId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Type" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SensorData">
+    <Key>
+      <PropertyRef Name="HistoryDataId" />
+    </Key>
+    <Property Name="HistoryDataId" Type="Int32" Nullable="false" />
+    <Property Name="SensorId" Type="Int32" />
+    <Property Name="DataNumeric" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DataText" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="SampleDateTime" Type="DateTime" Precision="3" />
+    <Property Name="EntryDateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+</Schema>
