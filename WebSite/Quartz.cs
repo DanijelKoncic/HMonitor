@@ -1,5 +1,4 @@
-﻿using Common.Logging;
-using Quartz;
+﻿using Quartz;
 
 namespace WebSite
 {

@@ -1,6 +1,5 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/d:Scripts/d:foundation/f:foundation.joyride.js" caret="1" fromTop="0" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/d:Scripts/d:foundation/f:foundation.interchange.js" caret="1" fromTop="0" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/d:Scripts/d:foundation/f:foundation.dropdown.js" caret="1" fromTop="0" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/d:Scripts/d:foundation/f:foundation.clearing.js" caret="1" fromTop="0" />
@@ -16,20 +15,21 @@
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Default1.aspx" caret="461" fromTop="8" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Web.Release.config" caret="0" fromTop="0" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Web.Debug.config" caret="0" fromTop="0" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Global.asax.cs" caret="712" fromTop="31" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/d:Properties/f:AssemblyInfo.cs" caret="0" fromTop="0" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/d:Styles/f:foundation1.css" caret="536" fromTop="0" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/d:Styles/f:foundation.css" caret="1777" fromTop="13" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Web.config" caret="447" fromTop="8" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/d:Styles/f:app.css" caret="1787" fromTop="27" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx" caret="2796" fromTop="22" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/d:Data/f:HistoricalDBModel.Context.cs" caret="732" fromTop="20" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Weather.cs" caret="911" fromTop="5" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:ConvertSafe.cs" caret="5443" fromTop="28" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Foundation.Master" caret="821" fromTop="17" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Foundation.Master" caret="0" fromTop="0" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Foundation.Master.cs" caret="323" fromTop="14" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Quartz.cs" caret="745" fromTop="15" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx.cs" caret="1122" fromTop="8" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Weather.cs" caret="1756" fromTop="3" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/d:App_Start/f:AuthConfig.cs" caret="158" fromTop="8" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx.cs" caret="966" fromTop="14" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Global.asax.cs" caret="1443" fromTop="41" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Web.config" caret="2964" fromTop="21" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Quartz.cs" caret="219" fromTop="10" />
   </RecentFiles>
   <RecentEdits>
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Site.Master" caret="394" fromTop="9" />
@@ -43,8 +43,9 @@
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/d:Styles/f:app.css" caret="1787" fromTop="15" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx" caret="2390" fromTop="15" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Foundation.Master" caret="2480" fromTop="16" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Weather.cs" caret="1389" fromTop="16" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Quartz.cs" caret="1424" fromTop="37" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx.cs" caret="2026" fromTop="14" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Weather.cs" caret="194" fromTop="11" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx.cs" caret="966" fromTop="14" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Global.asax.cs" caret="1415" fromTop="28" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Quartz.cs" caret="0" fromTop="0" />
   </RecentEdits>
 </RecentFiles>
