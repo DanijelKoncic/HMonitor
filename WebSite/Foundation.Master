@@ -28,7 +28,7 @@
 
                 <ul class="title-area">
                     <li class="name">
-                        <h1><a href="#">HMon</a></h1>
+                        <h1><a href="#">HMonitor</a></h1>
                     </li>
                 </ul>
 
@@ -62,7 +62,7 @@
     <footer>
         <div class="content-wrapper">
             <div class="text-center">
-                <p>&copy; <%: DateTime.Now.Year %> - HMon Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - HMonitor Applikaccija</p>
             </div>
         </div>
     </footer>

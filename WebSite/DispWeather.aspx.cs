@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data;
-using System.Data.SqlClient;
-using System.Data.Entity;
-using System.Configuration;
-using WebSite.Data;
+using Quartz;
+using Quartz.Impl;
 
 
 namespace WebSite
@@ -45,14 +37,8 @@ namespace WebSite
         {
             if(!IsPostBack)
             {
-                //String connString = ConfigurationManager.ConnectionStrings["TestDBConnectionString"].ConnectionString;
-                //GridView1.DataBind();
-            
+                GridView1.DataBind();
             }
-
-
-            //AppDomain.CurrentDomain.SetData("SQLServerCompactEditionUnderWebHosting", true);
-            
         }
 
         protected void GetWeather_Click(object sender, EventArgs e)
@@ -67,9 +53,9 @@ namespace WebSite
                 lblTemperaturaC.Text = string.Format("{0} {1}", "Trenutna temperatura (C):", currentWeather.temperaturaC);
 
                 //spremi temperaturu i vlagu
-                currentWeather.SaveCurrentWeather((int)EnumSensor.Temperatura, null, ConvertSafe.ToDecimal(currentWeather.temperaturaC), new DateTime());
-                currentWeather.SaveCurrentWeather((int)EnumSensor.Relativna_vlaga, null, ConvertSafe.ToDecimal(currentWeather.relative_humidity), new DateTime());
-
+                currentWeather.SaveCurrentWeather((int)EnumSensor.Temperatura, null, currentWeather.temperaturaC, currentWeather.observation_time_rfc822);
+                currentWeather.SaveCurrentWeather((int)EnumSensor.Relativna_vlaga, null, currentWeather.relative_humidity, currentWeather.observation_time_rfc822);
+                
                 GridView1.DataBind();
                 //var proba = Convert.ToDateTime(currentWeather.observation_time_rfc822);
             }

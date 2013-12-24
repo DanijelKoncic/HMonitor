@@ -10,11 +10,11 @@ namespace WebSite
     public class Weather
     {
         public string lokacija { get; set; }
-        public string temperaturaC { get; set; }
-        public string observation_time_rfc822 { get; set; }
+        public decimal temperaturaC { get; set; }
+        public DateTime observation_time_rfc822 { get; set; }
         //public string local_time_rfc822 { get; set; }
         //public string weather { get; set; }
-        public string relative_humidity { get; set; }
+        public decimal relative_humidity { get; set; }
         //public string wind_string { get; set; }
         //public string wind_dir { get; set; }
         //public string wind_degrees { get; set; }
@@ -33,6 +33,7 @@ namespace WebSite
 
         public enum EnumSensor
         {
+            //Sadrži enumeraciju pripadajućih senzora u bazi podataka
             Temperatura = 1,
             Relativna_vlaga
             
@@ -70,16 +71,15 @@ namespace WebSite
 
                 xmlNode = weatherData.GetElementsByTagName("temp_c").Item(0);
                 if (xmlNode != null)
-                    temperaturaC = xmlNode.InnerText;
+                    temperaturaC = Convert.ToDecimal(xmlNode.InnerText.Replace(".", ","));
 
                 xmlNode = weatherData.GetElementsByTagName("relative_humidity").Item(0);
                 if (xmlNode != null)
-                    relative_humidity = xmlNode.InnerText;
-                    relative_humidity = relative_humidity.Replace("%", String.Empty);
+                    relative_humidity =  Convert.ToDecimal(xmlNode.InnerText.Replace("%", String.Empty));
 
                 xmlNode = weatherData.GetElementsByTagName("observation_time_rfc822").Item(0);
                 if (xmlNode != null)
-                    observation_time_rfc822 = xmlNode.InnerText;
+                    observation_time_rfc822 = Convert.ToDateTime(xmlNode.InnerText);
 
                 xmlNode = weatherData.GetElementsByTagName("full").Item(0);
                 if (xmlNode != null)
@@ -94,19 +94,19 @@ namespace WebSite
             }
         }
 
-        public void SaveCurrentWeather (int _sensor, string _dataText, decimal _dataNumeric, DateTime _sampleDT)
+        public void SaveCurrentWeather (int sensor, string dataText, decimal dataNumeric, DateTime sampleDt)
         {
-            //Spremi podatke u bazu
+            //Spremi podatke u bazu prema senzoru, prikupljenoj vrijednosti i vremenu prikupljanja
             try
             {
                 using (var entityModel = new HistoricalDBEntities())
                 {
                     var sensorHistoryData = new SensorHistoryData()
                     {
-                        SensorId = _sensor,
-                        DataText = _dataText,
-                        DataNumeric = _dataNumeric,
-                        SampledDT = Convert.ToDateTime(_sampleDT),
+                        SensorId = sensor,
+                        DataText = dataText,
+                        DataNumeric = dataNumeric,
+                        SampledDT = sampleDt,
                         InsertedDT = DateTime.Now,
                     };
                     entityModel.SensorHistoryData.Add(sensorHistoryData);
@@ -120,15 +120,3 @@ namespace WebSite
         }
     }
 }
-
-
-
-//var a = weatherData.GetElementsByTagName("full").Count;
-//var b = weatherData.GetElementsByTagName("full").Item(0).InnerText;
-//icon_url = (weatherData.GetElementsByTagName("icon_url").Count > 0) ? weatherData.GetElementsByTagName("icon_url").Item(0).InnerText : string.Empty;
-//lokacija = (weatherData.GetElementsByTagName("full").Count > 0) ? weatherData.GetElementsByTagName("full").Item(0).InnerText  : string.Empty;
-//XmlNode currentObservation = weatherData.SelectSingleNode("response").SelectSingleNode("current_observation");
-//prenesi vrijednosti u varijable
-//lokacija = currentObservation.SelectSingleNode("observation_location").SelectSingleNode("full").InnerXml;
-//temperaturaC = string.Format("{0} {1}", currentObservation.SelectSingleNode("temp_c").InnerXml, " C");
-//observation_time_rfc822 = currentObservation.SelectSingleNode("observation_time_rfc822").InnerXml;
