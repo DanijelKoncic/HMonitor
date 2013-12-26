@@ -1,15 +1,20 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Web.config" caret="3986" fromTop="58" />
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx.designer.cs" caret="2466" fromTop="17" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx" caret="619" fromTop="3" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Global.asax.cs" caret="2090" fromTop="44" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx.cs" caret="1008" fromTop="1" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Web.config" caret="3986" fromTop="58" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx.cs" caret="1648" fromTop="21" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Weather.cs" caret="3399" fromTop="85" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:SensorInput.asmx.cs" caret="625" fromTop="11" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Quartz.cs" caret="572" fromTop="24" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Global.asax.cs" caret="2108" fromTop="9" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx" caret="527" fromTop="9" />
   </RecentFiles>
   <RecentEdits>
     <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Web.config" caret="3986" fromTop="16" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx" caret="567" fromTop="11" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx.cs" caret="896" fromTop="11" />
-    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Global.asax.cs" caret="2090" fromTop="29" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx" caret="527" fromTop="9" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:DispWeather.aspx.cs" caret="927" fromTop="15" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Global.asax.cs" caret="1419" fromTop="29" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:Quartz.cs" caret="736" fromTop="32" />
+    <File id="27CCFB89-A44D-45ED-9BC7-4E2EA79AAE79/f:SensorInput.asmx.cs" caret="917" fromTop="24" />
   </RecentEdits>
 </RecentFiles>
