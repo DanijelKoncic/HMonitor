@@ -210,6 +210,20 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams>
+      <Diagram Name="HistoricalDBModel">
+        <EntityTypeShape EntityType="HistoricalDBModel.Sensor" Width="1.5" PointX="3" PointY="1" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalDBModel.SensorGroup" Width="1.5" PointX="0.75" PointY="1.25" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalDBModel.SensorHistoryData" Width="1.5" PointX="5.25" PointY="1" Height="2.3648893229166656" IsExpanded="true" />
+        <AssociationConnector Association="HistoricalDBModel.FK_Sensor_SensorGroup" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.2401432291666667" />
+          <ConnectorPoint PointX="3" PointY="2.2401432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="HistoricalDBModel.FK_SensorHistoryData_Sensor" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="2.1824446614583328" />
+          <ConnectorPoint PointX="5.25" PointY="2.1824446614583328" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
   </Designer>
 </edmx:Edmx>

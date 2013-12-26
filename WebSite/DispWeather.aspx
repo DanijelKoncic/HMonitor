@@ -7,9 +7,11 @@
     <div class="large-8 columns">
         
     <div class="panel radius" style="background-color: #FFFFFF;">
-        <h4>Prikaz prikupljenih podataka senzora</h4>
+        <h4>Prikupljeni podaci senzora</h4>
         <br/>
-        
+
+        <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=HistoricalDBEntities" DefaultContainerName="HistoricalDBEntities" EnableFlattening="False" EntitySetName="SensorHistoryData">
+        </asp:EntityDataSource>        
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="SensorHistoryDataId" DataSourceID="EntityDataSource1" CssClass="mGrid">
             <Columns>
                 <asp:BoundField DataField="SensorHistoryDataId" HeaderText="SensorHistoryDataId" ReadOnly="True" SortExpression="SensorHistoryDataId" />
@@ -20,32 +22,8 @@
                 <asp:BoundField DataField="InsertedDT" HeaderText="InsertedDT" SortExpression="InsertedDT" />
             </Columns>
         </asp:GridView>
-        
-
-        <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=HistoricalDBEntities" DefaultContainerName="HistoricalDBEntities" EnableFlattening="False" EntitySetName="SensorHistoryData">
-        </asp:EntityDataSource>
-        
-
     </div>
 
-
-
-        
-        
-        
-
-        
-        
-        
-
-
-        
-        
-        
-
-        
-        
-        
 
     </div>
     <div class="large-4 columns">

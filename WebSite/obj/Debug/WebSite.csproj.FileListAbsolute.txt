@@ -28,3 +28,32 @@ C:\Users\dkoncic\Documents\Visual Studio 2012\Projects\HMonitor\WebSite\obj\Debu
 C:\Users\dkoncic\Documents\Visual Studio 2012\Projects\HMonitor\WebSite\obj\Debug\WebSite.dll
 C:\Users\dkoncic\Documents\Visual Studio 2012\Projects\HMonitor\WebSite\obj\Debug\WebSite.pdb
 C:\Users\dkoncic\documents\visual studio 2012\Projects\HMonitor\WebSite\obj\Debug\WebSite.csprojResolveAssemblyReference.cache
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\WebSite.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\WebSite.pdb
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\AspNet.ScriptManager.jQuery.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\DotNetOpenAuth.Core.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\EntityFramework.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\System.Web.Providers.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\Quartz.pdb
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\Quartz.xml
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\EntityFramework.xml
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\DotNetOpenAuth.Core.xml
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\obj\Debug\WebSite.Properties.Resources.resources
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\obj\Debug\WebSite.dll
+C:\Users\Danijel\Documents\GitHub\HMonitor\WebSite\obj\Debug\WebSite.pdb

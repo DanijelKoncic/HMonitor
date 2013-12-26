@@ -33,21 +33,21 @@ namespace WebSite
 
             //Job configuration
 
-            //WUnderground JOB; izvršava se svakih 15 sata, nema kraja
+            //WUnderground JOB; izvršava se svakih 10 minuta, nema kraja
             IJobDetail job = JobBuilder.Create<QuartzWeatherUG>()
                 .WithIdentity("Očitanje vremena", "Grupa1")
                 .Build();
-            
+
             DateTimeOffset startTime = DateBuilder.NextGivenSecondDate(null, 15);
             var trigger = (ISimpleTrigger)TriggerBuilder.Create()
-                                                          .WithIdentity("Trigger očitanja vremena", "Grupa1")
-                                                          .StartAt(startTime)
-                                                          .WithSimpleSchedule(
-                                                              x => x.WithIntervalInMinutes(15).RepeatForever())
-                                                          .Build();
+                                                        .WithIdentity("Trigger očitanja vremena", "Grupa1")
+                                                        .StartAt(startTime)
+                                                        .WithSimpleSchedule(
+                                                            x => x.WithIntervalInMinutes(10).RepeatForever())
+                                                        .Build();
 
-            ////Run
-            //DateTimeOffset? ft = sched.ScheduleJob(job, trigger);
+            //Run the Job
+            DateTimeOffset? ft = sched.ScheduleJob(job, trigger);
         }
 
         void Application_End(object sender, EventArgs e)
