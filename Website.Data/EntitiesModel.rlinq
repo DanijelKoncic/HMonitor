@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DomainModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" name="HMonitorData" namespace="Website.Data" showPropertiesCompartment="true" xmlns="http://www.telerik.com/ORM">
+  <orm:orm name="HMonitorData" backend="sqlce" xmlns:orm="http://tempuri.org/ORM">
+    <orm:namespace name="Website.Data" default="true">
+      <orm:class name="SensorHistoryData" uniqueId="71844d5b-0cac-416d-a50a-9bd80f0eb7e9">
+        <orm:table name="SensorHistoryData" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="SensorHistoryDataId" />
+          </orm:key-generator>
+          <orm:single-field field-name="_sensorHistoryDataId" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_sensorHistoryDataId" property="SensorHistoryDataId" behavior="readwrite" uniqueId="1515a024-a247-42f9-b3e6-8d1c2c484266" type="System.Int32">
+          <orm:column name="SensorHistoryDataId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_sensorId" property="SensorId" behavior="readwrite" uniqueId="76880ae5-691e-498b-b572-54d9cd8ecedb" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="SensorId" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_dataText" property="DataText" behavior="readwrite" uniqueId="e1dffe58-d873-45b8-aa62-b3d2f4ae60a7" type="System.String">
+          <orm:column name="DataText" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_dataNumeric" property="DataNumeric" behavior="readwrite" uniqueId="8372a1a6-221b-4eac-97c4-841d10a12ac8" type="System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="DataNumeric" sql-type="numeric" nullable="true" length="10" scale="2" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="_sampledDT" property="SampledDT" behavior="readwrite" uniqueId="3f545ec7-de7c-4ccc-afb8-aa998315754a" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="SampledDT" sql-type="datetime" nullable="true" length="0" scale="3" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_insertedDT" property="InsertedDT" behavior="readwrite" uniqueId="55d5179f-616a-4629-8a59-1f10bb56b544" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="InsertedDT" sql-type="datetime" nullable="true" length="0" scale="3" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_sensor" property="Sensor" behavior="readwrite" uniqueId="039699cd-9983-4db4-8653-4554eec256ad" type="Website.Data.Sensor">
+          <orm:reference uniqueId="b6f76da1-1e3b-44bb-8648-ad59142e786f" association-name="SensorHistoryDataHasSensor">
+            <orm:sharedfield name="_sensorId" target-class="Website.Data.Sensor" target-field="_sensorId" />
+            <orm:constraint name="FK_SensorHistoryData_Sensor" delete-action="dbdefaultrule" destination-table="Sensor" />
+          </orm:reference>
+        </orm:field>
+        <orm:index name="UQ__SensorHistoryData__0000000000000014" unique="true">
+          <orm:columnMapping>
+            <orm:column name="SensorHistoryDataId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:class>
+      <orm:class name="SensorGroup" uniqueId="2894dd37-f087-4350-bf46-770415f2b378">
+        <orm:table name="SensorGroup" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="SensorGroupId" />
+          </orm:key-generator>
+          <orm:single-field field-name="_sensorGroupId" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_sensorGroupId" property="SensorGroupId" behavior="readwrite" uniqueId="349a649c-aaac-4a3e-853a-df2d83013e32" type="System.Int32">
+          <orm:column name="SensorGroupId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_name" property="Name" behavior="readwrite" uniqueId="f2c6b50d-4eed-4603-82dd-d778a90d47d4" type="System.String">
+          <orm:column name="Name" sql-type="nvarchar" nullable="true" length="100" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_comment" property="Comment" behavior="readwrite" uniqueId="900d0528-3bee-4885-8925-d67c07b293ef" type="System.String">
+          <orm:column name="Comment" sql-type="nvarchar" nullable="true" length="100" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_active" property="Active" behavior="readwrite" uniqueId="985cf0c9-6944-44bb-9a6e-7d6bd54b7f69" type="System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="Active" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_sensor" property="Sensor" behavior="readwrite" uniqueId="c0cc972d-192e-4a70-9d38-c9051dde96c5" type="Website.Data.Sensor">
+          <orm:collection element-class="Website.Data.Sensor" inverse-field="_sensorGroup" order-by="" uniqueId="67abf078-46d7-4089-91e0-ca57c3e813b9" />
+        </orm:field>
+        <orm:index name="UQ__SensorGroup__0000000000000014" unique="true">
+          <orm:columnMapping>
+            <orm:column name="SensorGroupId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:class>
+      <orm:class name="Sensor" uniqueId="441a9962-db9b-4ee9-b19b-d54c519819fc">
+        <orm:table name="Sensor" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="SensorId" />
+          </orm:key-generator>
+          <orm:single-field field-name="_sensorId" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_sensorId" property="SensorId" behavior="readwrite" uniqueId="8035d0d6-97ec-4c25-9c9c-a07db52a4425" type="System.Int32">
+          <orm:column name="SensorId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_sensorGroupId" property="SensorGroupId" behavior="readwrite" uniqueId="1a54d05f-4607-454b-b07e-dcf1c75c3383" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="SensorGroupId" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_name" property="Name" behavior="readwrite" uniqueId="baeb1b62-96dc-4293-ab38-c62b034d9901" type="System.String">
+          <orm:column name="Name" sql-type="nvarchar" nullable="true" length="100" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_dimension" property="Dimension" behavior="readwrite" uniqueId="3c4b71cd-002a-4345-9dfb-49043029b4ab" type="System.String">
+          <orm:column name="Dimension" sql-type="nvarchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_comment" property="Comment" behavior="readwrite" uniqueId="d0201f0d-8430-4d52-a5ef-0168bff9ba9e" type="System.String">
+          <orm:column name="Comment" sql-type="nvarchar" nullable="true" length="100" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_active" property="Active" behavior="readwrite" uniqueId="7562e280-05a8-41fe-ab53-6815082cc3e5" type="System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="Active" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_code" property="Code" behavior="readwrite" uniqueId="349f05db-6d60-4bf9-a214-b1ad2069bfa0" type="System.String">
+          <orm:column name="Code" sql-type="nvarchar" nullable="false" length="10" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_sensorHistoryData" property="SensorHistoryData" behavior="readwrite" uniqueId="25b90f90-63e4-499b-b287-af61a88d60f4" type="Website.Data.SensorHistoryData">
+          <orm:collection element-class="Website.Data.SensorHistoryData" inverse-field="_sensor" order-by="" uniqueId="b6f76da1-1e3b-44bb-8648-ad59142e786f" />
+        </orm:field>
+        <orm:field name="_sensorGroup" property="SensorGroup" behavior="readwrite" uniqueId="2143d97b-4744-4c80-8e93-4c1d23c65d89" type="Website.Data.SensorGroup">
+          <orm:reference uniqueId="67abf078-46d7-4089-91e0-ca57c3e813b9" association-name="SensorHasSensorGroup">
+            <orm:sharedfield name="_sensorGroupId" target-class="Website.Data.SensorGroup" target-field="_sensorGroupId" />
+            <orm:constraint name="FK_Sensor_SensorGroup" delete-action="dbdefaultrule" destination-table="SensorGroup" />
+          </orm:reference>
+        </orm:field>
+        <orm:index name="UQ__Sensor__0000000000000014" unique="true">
+          <orm:columnMapping>
+            <orm:column name="SensorId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="UQ__Sensor__00000000000001D5" unique="true">
+          <orm:columnMapping>
+            <orm:column name="Code" sql-type="nvarchar" nullable="false" length="10" scale="0" ado-type="UnicodeStringVariableLength" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:class>
+    </orm:namespace>
+    <orm:schema schema="">
+      <orm:table name="SensorHistoryData">
+        <orm:column name="SensorHistoryDataId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="SensorId" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="DataText" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="DataNumeric" sql-type="numeric" nullable="true" length="10" scale="2" ado-type="Numeric" />
+        <orm:column name="SampledDT" sql-type="datetime" nullable="true" length="0" scale="3" ado-type="DateTime" />
+        <orm:column name="InsertedDT" sql-type="datetime" nullable="true" length="0" scale="3" ado-type="DateTime" />
+        <orm:index name="UQ__SensorHistoryData__0000000000000014" unique="true">
+          <orm:columnMapping>
+            <orm:column name="SensorHistoryDataId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:constraint name="FK_SensorHistoryData_Sensor" delete-action="dbdefaultrule" destination-table="Sensor">
+          <orm:column name="SensorId" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="SensorGroup">
+        <orm:column name="SensorGroupId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="Name" sql-type="nvarchar" nullable="true" length="100" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Comment" sql-type="nvarchar" nullable="true" length="100" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Active" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        <orm:index name="UQ__SensorGroup__0000000000000014" unique="true">
+          <orm:columnMapping>
+            <orm:column name="SensorGroupId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:table>
+      <orm:table name="Sensor">
+        <orm:column name="SensorId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="SensorGroupId" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="Name" sql-type="nvarchar" nullable="true" length="100" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Dimension" sql-type="nvarchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Comment" sql-type="nvarchar" nullable="true" length="100" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Active" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        <orm:column name="Code" sql-type="nvarchar" nullable="false" length="10" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:index name="UQ__Sensor__0000000000000014" unique="true">
+          <orm:columnMapping>
+            <orm:column name="SensorId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="UQ__Sensor__00000000000001D5" unique="true">
+          <orm:columnMapping>
+            <orm:column name="Code" sql-type="nvarchar" nullable="false" length="10" scale="0" ado-type="UnicodeStringVariableLength" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:constraint name="FK_Sensor_SensorGroup" delete-action="dbdefaultrule" destination-table="SensorGroup">
+          <orm:column name="SensorGroupId" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+    </orm:schema>
+    <orm:relational-naming-settings>
+      <orm:source-strategy>Property</orm:source-strategy>
+      <orm:remove-camel-case>False</orm:remove-camel-case>
+    </orm:relational-naming-settings>
+  </orm:orm>
+  <ModelSettings xmlns="">
+    <AppConfigConnectionPropertyName>HistoricalDBConnection</AppConfigConnectionPropertyName>
+    <AppConfigConnectionString>data source=C:\Users\dkoncic\documents\visual studio 2012\Projects\HMonitor\WebSite\App_Data\HistoricalDB.sdf</AppConfigConnectionString>
+    <InitialCatalog>HistoricalDB</InitialCatalog>
+    <NamingSettings>
+      <ClassRules>
+        <CaseMode>PascalCase</CaseMode>
+      </ClassRules>
+      <FieldRules>
+        <AddPrefix>_</AddPrefix>
+        <CaseMode>CamelCase</CaseMode>
+      </FieldRules>
+      <PropertyRules>
+        <CaseMode>PascalCase</CaseMode>
+      </PropertyRules>
+      <NavigationPropertyRules>
+        <PluralizationModeCollections>Unchanged</PluralizationModeCollections>
+        <IsPrefixSuffixEnabled>false</IsPrefixSuffixEnabled>
+      </NavigationPropertyRules>
+    </NamingSettings>
+    <CodeGenerationSettings>
+      <OutputProjectName>Website.Data</OutputProjectName>
+      <MappingDefinitionType>Xml</MappingDefinitionType>
+    </CodeGenerationSettings>
+    <SchemaUpdateSettings />
+    <BackendConfigurationSettings>
+      <BackendConfiguration>
+        <Backend>SqlCe</Backend>
+        <ProviderName>Microsoft.SqlServerCe.Client.3.5</ProviderName>
+      </BackendConfiguration>
+    </BackendConfigurationSettings>
+  </ModelSettings>
+  <Types>
+    <DomainClass Id="71844d5b-0cac-416d-a50a-9bd80f0eb7e9" name="SensorHistoryData" namespace="Website.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="SensorHistoryDataId">
+      <Property Id="1515a024-a247-42f9-b3e6-8d1c2c484266" name="SensorHistoryDataId" type="Int32" label="SensorHistoryDataId : Int32" kind="Persistent" identity="true" fieldName="_sensorHistoryDataId" />
+      <Property Id="8372a1a6-221b-4eac-97c4-841d10a12ac8" name="DataNumeric" type="Decimal" label="DataNumeric : Decimal" nullable="true" kind="Persistent" fieldName="_dataNumeric" />
+      <Property Id="e1dffe58-d873-45b8-aa62-b3d2f4ae60a7" name="DataText" label="DataText : String" kind="Persistent" fieldName="_dataText" />
+      <Property Id="55d5179f-616a-4629-8a59-1f10bb56b544" name="InsertedDT" type="DateTime" label="InsertedDT : DateTime" nullable="true" kind="Persistent" fieldName="_insertedDT" />
+      <Property Id="3f545ec7-de7c-4ccc-afb8-aa998315754a" name="SampledDT" type="DateTime" label="SampledDT : DateTime" nullable="true" kind="Persistent" fieldName="_sampledDT" />
+      <Property Id="76880ae5-691e-498b-b572-54d9cd8ecedb" name="SensorId" type="Int32" label="SensorId : Int32" nullable="true" kind="Persistent" fieldName="_sensorId" />
+      <AssociationTargets>
+        <Association Id="b6f76da1-1e3b-44bb-8648-ad59142e786f" SourceMultiplicity="ZeroOne" name="SensorHistoryDataHasSensor">
+          <DomainClassMoniker name="/HMonitorData/Sensor" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="d0a1b048-3b49-43f4-b72b-9fb15c7651ae">
+              <NavigationalPropertyMoniker name="/HMonitorData/Sensor/SensorHistoryData" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="8c0ee6e7-f3ed-403c-8cb9-a5a99d673507">
+              <NavigationalPropertyMoniker name="/HMonitorData/SensorHistoryData/Sensor" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="029789ef-c153-45a2-a3e0-5622d201cac2">
+          <NavigationalProperty Id="039699cd-9983-4db4-8653-4554eec256ad" name="Sensor" type="Sensor" label="Sensor : Sensor" nullable="true" kind="Persistent" fieldName="_sensor" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="2894dd37-f087-4350-bf46-770415f2b378" name="SensorGroup" namespace="Website.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="SensorGroupId">
+      <Property Id="349a649c-aaac-4a3e-853a-df2d83013e32" name="SensorGroupId" type="Int32" label="SensorGroupId : Int32" kind="Persistent" identity="true" fieldName="_sensorGroupId" />
+      <Property Id="985cf0c9-6944-44bb-9a6e-7d6bd54b7f69" name="Active" type="Boolean" label="Active : Boolean" nullable="true" kind="Persistent" fieldName="_active" />
+      <Property Id="900d0528-3bee-4885-8925-d67c07b293ef" name="Comment" label="Comment : String" kind="Persistent" fieldName="_comment" />
+      <Property Id="f2c6b50d-4eed-4603-82dd-d778a90d47d4" name="Name" label="Name : String" kind="Persistent" fieldName="_name" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="cbe9acd5-5277-4f46-960a-8c4efe0fa834">
+          <NavigationalProperty Id="c0cc972d-192e-4a70-9d38-c9051dde96c5" name="Sensor" type="IList&lt;Sensor&gt;" label="Sensor : IList&lt;Sensor&gt;" nullable="true" kind="Persistent" fieldName="_sensor" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="441a9962-db9b-4ee9-b19b-d54c519819fc" name="Sensor" namespace="Website.Data" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="SensorId">
+      <Property Id="8035d0d6-97ec-4c25-9c9c-a07db52a4425" name="SensorId" type="Int32" label="SensorId : Int32" kind="Persistent" identity="true" fieldName="_sensorId" />
+      <Property Id="7562e280-05a8-41fe-ab53-6815082cc3e5" name="Active" type="Boolean" label="Active : Boolean" nullable="true" kind="Persistent" fieldName="_active" />
+      <Property Id="349f05db-6d60-4bf9-a214-b1ad2069bfa0" name="Code" label="Code : String" kind="Persistent" fieldName="_code" />
+      <Property Id="d0201f0d-8430-4d52-a5ef-0168bff9ba9e" name="Comment" label="Comment : String" kind="Persistent" fieldName="_comment" />
+      <Property Id="3c4b71cd-002a-4345-9dfb-49043029b4ab" name="Dimension" label="Dimension : String" kind="Persistent" fieldName="_dimension" />
+      <Property Id="baeb1b62-96dc-4293-ab38-c62b034d9901" name="Name" label="Name : String" kind="Persistent" fieldName="_name" />
+      <Property Id="1a54d05f-4607-454b-b07e-dcf1c75c3383" name="SensorGroupId" type="Int32" label="SensorGroupId : Int32" nullable="true" kind="Persistent" fieldName="_sensorGroupId" />
+      <AssociationTargets>
+        <Association Id="67abf078-46d7-4089-91e0-ca57c3e813b9" SourceMultiplicity="ZeroOne" name="SensorHasSensorGroup">
+          <DomainClassMoniker name="/HMonitorData/SensorGroup" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="864ff9c3-e773-4f40-a97a-6b5f7bee3142">
+              <NavigationalPropertyMoniker name="/HMonitorData/SensorGroup/Sensor" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="5d813f11-12f8-4594-924d-9ed627ae503e">
+              <NavigationalPropertyMoniker name="/HMonitorData/Sensor/SensorGroup" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="88fb1ffa-9f20-4a14-b7cf-17f547ffdff6">
+          <NavigationalProperty Id="25b90f90-63e4-499b-b287-af61a88d60f4" name="SensorHistoryData" type="IList&lt;SensorHistoryData&gt;" label="SensorHistoryData : IList&lt;SensorHistoryData&gt;" nullable="true" kind="Persistent" fieldName="_sensorHistoryData" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="fe009142-d170-4cc3-9d83-376f98090e17">
+          <NavigationalProperty Id="2143d97b-4744-4c80-8e93-4c1d23c65d89" name="SensorGroup" type="SensorGroup" label="SensorGroup : SensorGroup" nullable="true" kind="Persistent" fieldName="_sensorGroup" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+  </Types>
+  <domainContext>
+    <domainModelHasDomainContext Id="9a7c3c57-52f7-4161-8275-ff1863faacfa">
+      <domainContainer name="HMonitorData" namespace="Website.Data" showPropertiesCompartment="true">
+        <entitySetProperty name="SensorHistoryDatas" namespace="Website.Data" type="SensorHistoryData" label="SensorHistoryDatas : IQueryable&lt;Website.Data.SensorHistoryData&gt;" />
+        <entitySetProperty name="SensorGroups" namespace="Website.Data" type="SensorGroup" label="SensorGroups : IQueryable&lt;Website.Data.SensorGroup&gt;" />
+        <entitySetProperty name="Sensors" namespace="Website.Data" type="Sensor" label="Sensors : IQueryable&lt;Website.Data.Sensor&gt;" />
+      </domainContainer>
+    </domainModelHasDomainContext>
+  </domainContext>
+</DomainModel>

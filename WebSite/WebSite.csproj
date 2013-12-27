@@ -113,6 +113,10 @@
     <Reference Include="Microsoft.AspNet.Membership.OpenAuth, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.Membership.OpenAuth.1.0.0\lib\net40\Microsoft.AspNet.Membership.OpenAuth.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.OpenAccess, Version=2013.3.1211.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2013.3.1211.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.OpenAccess.Web, Version=2013.3.1211.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.OpenAccess.Web.40, Version=2013.3.1211.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
@@ -199,23 +203,6 @@
     <Content Include="Content\Images\orderedList7.png" />
     <Content Include="Content\Images\orderedList8.png" />
     <Content Include="Content\Images\orderedList9.png" />
-    <EntityDeploy Include="Data\HistoricalDBModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HistoricalDBModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Data\HistoricalDBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HistoricalDBModel.edmx</DependentUpon>
-      <LastGenOutput>HistoricalDBModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Data\HistoricalDBModel.edmx.diagram">
-      <DependentUpon>HistoricalDBModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Data\HistoricalDBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HistoricalDBModel.edmx</DependentUpon>
-      <LastGenOutput>HistoricalDBModel.cs</LastGenOutput>
-    </Content>
     <None Include="index.ht" />
     <Content Include="packages.config" />
     <Content Include="Foundation.Master" />
@@ -265,7 +252,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Data\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -308,6 +295,9 @@
     <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Communicator.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -317,30 +307,6 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConvertSafe.cs" />
-    <Compile Include="Data\HistoricalDBModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HistoricalDBModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\HistoricalDBModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HistoricalDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\HistoricalDBModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HistoricalDBModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Sensor.cs">
-      <DependentUpon>HistoricalDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\SensorGroup.cs">
-      <DependentUpon>HistoricalDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\SensorHistoryData.cs">
-      <DependentUpon>HistoricalDBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -423,6 +389,16 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Start\" />
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Website.Data\Website.Data.csproj">
+      <Project>{cd24d50b-0b71-4b8c-9e40-d286d82cc78c}</Project>
+      <Name>Website.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,33 +1,12 @@
-﻿using Quartz;
+﻿using System;
+using System.Linq;
+using Quartz;
+using Website.Data;
 
 namespace WebSite
 {
-    //public class Quartz : IJob
-    //{
-    //    private static ILog _log = LogManager.GetLogger(typeof(Quartz));
-        
-    //    public Quartz()
-    //    {
-    //    }
-
-    //    public virtual void Execute(IJobExecutionContext context)
-    //    {
-    //        _log.Info(string.Format("Hello world! - {0}", System.DateTime.Now.ToString("r")));
-    //    }
-    //}
-
-    //public interface IJob
-    //{
-    //    void Execute(IJobExecutionContext context);
-    //}
-
-
     public class QuartzWeatherUG : IJob
     {
-        public QuartzWeatherUG ()
-        {
-        }
-
         public void Execute(IJobExecutionContext context)
         {
             var currentWeather = new Weather();
@@ -37,12 +16,57 @@ namespace WebSite
             if (error)
             {
                 //Snimi temperaturu
-                currentWeather.SaveCurrentWeather((int)Weather.EnumSensor.Temperatura,null,currentWeather.temperaturaC,currentWeather.observation_time_rfc822);
+                SaveCurrentWeather("WUTEMP01", null, currentWeather.temperaturaC, currentWeather.observation_time_rfc822);
                 //Snimi vlagu
-                currentWeather.SaveCurrentWeather((int)Weather.EnumSensor.Relativna_vlaga,null,currentWeather.relative_humidity,currentWeather.observation_time_rfc822);
+                SaveCurrentWeather("WUHUMI01", null, currentWeather.relative_humidity, currentWeather.observation_time_rfc822);
                 
             }
+            else
+            {
+                //TODO: Prikazati grešku
+            }
         }
+
+        public void SaveCurrentWeather(string sensorCode, string dataText, decimal dataNumeric, DateTime sampleDt)
+            {
+                //Spremi podatke u bazu prema senzoru, prikupljenoj vrijednosti i vremenu prikupljanja
+                try
+                {
+
+                    var dc = new HMonitorData();
+                    var first = dc.Sensors.First(s => s.Code == sensorCode);
+                    if (first != null)
+                    {
+                        var sensorId = first.SensorId;
+
+                        using (dc)
+                        {
+                            var sensorHistoryData = new SensorHistoryData()
+                            {
+                                SensorId = sensorId,
+                                DataText = dataText,
+                                DataNumeric = dataNumeric,
+                                SampledDT = sampleDt,
+                                InsertedDT = DateTime.Now
+                            };
+                            dc.Add(sensorHistoryData);
+                            dc.SaveChanges();
+                        }
+
+                    }
+                    else
+                    {
+                        //TODO: Implementirati prikaz greške "
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+
     }
+
 
 }

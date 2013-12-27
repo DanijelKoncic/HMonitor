@@ -1,4 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Foundation.Master" AutoEventWireup="true" CodeBehind="DispWeather.aspx.cs" Inherits="WebSite.DispWeather" %>
+
+<%@ Register Assembly="Telerik.OpenAccess.Web.40" Namespace="Telerik.OpenAccess.Web" TagPrefix="telerik" %>
+
+<%@ Register Assembly="Telerik.OpenAccess.Web" Namespace="Telerik.OpenAccess" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -10,9 +14,12 @@
         <h4>Prikaz prikupljenih podataka senzora</h4>
         <br/>
         
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="SensorHistoryDataId" DataSourceID="EntityDataSource1" CssClass="mGrid">
+        <telerik:OpenAccessLinqDataSource ID="OpenAccessLinqDataSource1" runat="server" ContextTypeName="Website.Data.HMonitorData" EntityTypeName="" ResourceSetName="SensorHistoryDatas">
+        </telerik:OpenAccessLinqDataSource>
+
+        <asp:GridView ID="GridView1" runat="server" DataSourceID="OpenAccessLinqDataSource1" CssClass="mGrid" AutoGenerateColumns="False" DataKeyNames="SensorHistoryDataId">
             <Columns>
-                <asp:BoundField DataField="SensorHistoryDataId" HeaderText="SensorHistoryDataId" ReadOnly="True" SortExpression="SensorHistoryDataId" />
+                <asp:BoundField DataField="SensorHistoryDataId" HeaderText="SensorHistoryDataId" InsertVisible="False" ReadOnly="True" SortExpression="SensorHistoryDataId" />
                 <asp:BoundField DataField="SensorId" HeaderText="SensorId" SortExpression="SensorId" />
                 <asp:BoundField DataField="DataText" HeaderText="DataText" SortExpression="DataText" />
                 <asp:BoundField DataField="DataNumeric" HeaderText="DataNumeric" SortExpression="DataNumeric" />
@@ -20,10 +27,6 @@
                 <asp:BoundField DataField="InsertedDT" HeaderText="InsertedDT" SortExpression="InsertedDT" />
             </Columns>
         </asp:GridView>
-        
-
-        <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=HistoricalDBEntities" DefaultContainerName="HistoricalDBEntities" EnableFlattening="False" EntitySetName="SensorHistoryData">
-        </asp:EntityDataSource>
         
 
     </div>

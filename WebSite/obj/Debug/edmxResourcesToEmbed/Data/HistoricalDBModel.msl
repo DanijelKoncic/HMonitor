@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Sensor">
       <EntityTypeMapping TypeName="HistoricalDBModel.Sensor">
         <MappingFragment StoreEntitySet="Sensor">
+          <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="SensorId" ColumnName="SensorId" />
           <ScalarProperty Name="SensorGroupId" ColumnName="SensorGroupId" />
           <ScalarProperty Name="Name" ColumnName="Name" />

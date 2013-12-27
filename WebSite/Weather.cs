@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Xml;
-using WebSite.Data;
+using Telerik.OpenAccess;
+using Telerik.OpenAccess.Config.Sql;
+using Website.Data;
 
 namespace WebSite
 {
     public class Weather
     {
+        
         public string lokacija { get; set; }
         public decimal temperaturaC { get; set; }
         public DateTime observation_time_rfc822 { get; set; }
@@ -94,29 +97,58 @@ namespace WebSite
             }
         }
 
-        public void SaveCurrentWeather (int sensor, string dataText, decimal dataNumeric, DateTime sampleDt)
-        {
-            //Spremi podatke u bazu prema senzoru, prikupljenoj vrijednosti i vremenu prikupljanja
-            try
-            {
-                using (var entityModel = new HistoricalDBEntities())
-                {
-                    var sensorHistoryData = new SensorHistoryData()
-                    {
-                        SensorId = sensor,
-                        DataText = dataText,
-                        DataNumeric = dataNumeric,
-                        SampledDT = sampleDt,
-                        InsertedDT = DateTime.Now,
-                    };
-                    entityModel.SensorHistoryData.Add(sensorHistoryData);
-                    entityModel.SaveChanges();
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        //public void SaveCurrentWeather (HMonitorData _dc, string sensorCode, string dataText, decimal dataNumeric, DateTime sampleDt)
+        //{
+        //    //Spremi podatke u bazu prema senzoru, prikupljenoj vrijednosti i vremenu prikupljanja
+        //    try
+        //    {
+
+        //        var dc = _dc;
+        //        var first = dc.Sensors.First(s => s.Code == sensorCode);
+        //        if (first != null)
+        //        {
+        //            var sensorId = first.SensorId;
+
+        //            using (dc)
+        //            {
+        //                var sensorHistoryData = new SensorHistoryData()
+        //                    {
+        //                        SensorId = sensorId,
+        //                        DataText = dataText,
+        //                        DataNumeric = dataNumeric,
+        //                        SampledDT = sampleDt,
+        //                        InsertedDT = DateTime.Now
+        //                    };
+        //                dc.Add(sensorHistoryData);
+        //                dc.SaveChanges();
+        //            }
+
+        //        }
+        //        else
+        //        {
+        //            //TODO: Implementirati prikaz greške "
+        //        }
+
+
+        //        //Snimanje u Entities modelu
+        //        //using (var entityModel = new HistoricalDBEntities())
+        //        //{
+        //        //    var sensorHistoryData = new SensorHistoryData()
+        //        //    {
+        //        //        SensorId = sensor,
+        //        //        DataText = dataText,
+        //        //        DataNumeric = dataNumeric,
+        //        //        SampledDT = sampleDt,
+        //        //        InsertedDT = DateTime.Now,
+        //        //    };
+        //        //    entityModel.SensorHistoryData.Add(sensorHistoryData);
+        //        //    entityModel.SaveChanges();
+        //        //}
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
     }
 }

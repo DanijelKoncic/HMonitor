@@ -23,6 +23,7 @@
     <Property Name="Dimension" Type="nvarchar" MaxLength="10" />
     <Property Name="Comment" Type="nvarchar" MaxLength="100" />
     <Property Name="Active" Type="bit" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="10" />
   </EntityType>
   <EntityType Name="SensorGroup">
     <Key>

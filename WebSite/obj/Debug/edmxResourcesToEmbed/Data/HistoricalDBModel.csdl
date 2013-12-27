@@ -25,6 +25,7 @@
     <Property Name="Active" Type="Boolean" />
     <NavigationProperty Name="SensorGroup" Relationship="HistoricalDBModel.FK_Sensor_SensorGroup" FromRole="Sensor" ToRole="SensorGroup" />
     <NavigationProperty Name="SensorHistoryData" Relationship="HistoricalDBModel.FK_SensorHistoryData_Sensor" FromRole="Sensor" ToRole="SensorHistoryData" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="SensorGroup">
     <Key>

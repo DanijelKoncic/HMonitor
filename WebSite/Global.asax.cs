@@ -8,13 +8,20 @@ using System.Web;
 using System.Web.Routing;
 using System.Web.Security;
 using WebSite;
+using System.Configuration;
 
 namespace WebSite
 {
     public class Global : HttpApplication
     {
+
+        public static string ConnectionString { get; set; }
+
         void Application_Start(object sender, EventArgs e)
         {
+            //Napuni konekcijski string
+            //ConnectionString = ConfigurationManager.ConnectionStrings["HistoricalDBConnection"].ConnectionString;
+            
             // Code that runs on application startup
             AuthConfig.RegisterOpenAuth();
 
@@ -46,7 +53,7 @@ namespace WebSite
                                                               x => x.WithIntervalInMinutes(15).RepeatForever())
                                                           .Build();
 
-            ////Run
+            ////Ako se želi pokrenuti scheduler donja linija mora biti odkomentirana
             //DateTimeOffset? ft = sched.ScheduleJob(job, trigger);
         }
 
