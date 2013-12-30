@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Xml;
 using Telerik.OpenAccess;
@@ -34,31 +35,31 @@ namespace WebSite
         //public string precip_today_metric { get; set; }
         public string icon_url { get; set; }
 
-        public enum EnumSensor
-        {
-            //Sadrži enumeraciju pripadajućih senzora u bazi podataka
-            Temperatura = 1,
-            Relativna_vlaga
+        //public enum EnumSensor
+        //{
+        //    //Sadrži enumeraciju pripadajućih senzora u bazi podataka
+        //    Temperatura = 1,
+        //    Relativna_vlaga
             
-            //WUTemperature,
-            //WULocation,
-            //WURelativeHumidity,
-            //WUWindString,
-            //WUWindDir,
-            //WUWindDegrees,
-            //WUWindKph,
-            //WUWindGustKph,
-            //WUPressureMb,
-            //WUPressureTrend,
-            //WUDewpointC,
-            //WUFeelslikeC,
-            //WUVisibilityKm,
-            //WUSolarradiation,
-            //WUUV,
-            //WUPrecip_1HrMetric,
-            //WUPrecipTodayMetric,
-            //WUIconUrl,
-        }
+        //    //WUTemperature,
+        //    //WULocation,
+        //    //WURelativeHumidity,
+        //    //WUWindString,
+        //    //WUWindDir,
+        //    //WUWindDegrees,
+        //    //WUWindKph,
+        //    //WUWindGustKph,
+        //    //WUPressureMb,
+        //    //WUPressureTrend,
+        //    //WUDewpointC,
+        //    //WUFeelslikeC,
+        //    //WUVisibilityKm,
+        //    //WUSolarradiation,
+        //    //WUUV,
+        //    //WUPrecip_1HrMetric,
+        //    //WUPrecipTodayMetric,
+        //    //WUIconUrl,
+        //}
 
         public bool GetCurrentWeather(string weatherQuery)
         {
@@ -97,58 +98,97 @@ namespace WebSite
             }
         }
 
-        //public void SaveCurrentWeather (HMonitorData _dc, string sensorCode, string dataText, decimal dataNumeric, DateTime sampleDt)
-        //{
-        //    //Spremi podatke u bazu prema senzoru, prikupljenoj vrijednosti i vremenu prikupljanja
-        //    try
-        //    {
+        public void SaveCurrentWeather (string sensorCode, string dataText, decimal dataNumeric, DateTime sampleDt)
+        {
+            //Spremi podatke u bazu prema senzoru, prikupljenoj vrijednosti i vremenu prikupljanja
+            try
+            {
+                using (var dc = new HMonitorData())
+                {
+                    var first = dc.Sensors.First(s => s.Code == sensorCode);
+                    if (first != null)
+                    {
+                        var sensorId = first.SensorId;
+                        var sensorHistoryData = new SensorHistoryData()
+                                                    {
+                                                        SensorId = sensorId,
+                                                        DataNumeric = dataNumeric,
+                                                        DataText = dataText,
+                                                        SampledDT = sampleDt,
+                                                        InsertedDT = DateTime.Now
+                                                    };
+                        dc.Add(sensorHistoryData);
+                        dc.SaveChanges();
+                    }
+                    else
+                    {
+                        //TODO: Obavijestiti da ne postoji sensorCode
+                    }
 
-        //        var dc = _dc;
-        //        var first = dc.Sensors.First(s => s.Code == sensorCode);
-        //        if (first != null)
-        //        {
-        //            var sensorId = first.SensorId;
-
-        //            using (dc)
-        //            {
-        //                var sensorHistoryData = new SensorHistoryData()
-        //                    {
-        //                        SensorId = sensorId,
-        //                        DataText = dataText,
-        //                        DataNumeric = dataNumeric,
-        //                        SampledDT = sampleDt,
-        //                        InsertedDT = DateTime.Now
-        //                    };
-        //                dc.Add(sensorHistoryData);
-        //                dc.SaveChanges();
-        //            }
-
-        //        }
-        //        else
-        //        {
-        //            //TODO: Implementirati prikaz greške "
-        //        }
-
-
-        //        //Snimanje u Entities modelu
-        //        //using (var entityModel = new HistoricalDBEntities())
-        //        //{
-        //        //    var sensorHistoryData = new SensorHistoryData()
-        //        //    {
-        //        //        SensorId = sensor,
-        //        //        DataText = dataText,
-        //        //        DataNumeric = dataNumeric,
-        //        //        SampledDT = sampleDt,
-        //        //        InsertedDT = DateTime.Now,
-        //        //    };
-        //        //    entityModel.SensorHistoryData.Add(sensorHistoryData);
-        //        //    entityModel.SaveChanges();
-        //        //}
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //}
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+//var dc = HMonitorDataContext;
+////var dc = _dc;
+//var first = dc.Sensors.First(s => s.Code == sensorCode);
+//if (first != null)
+//{
+//    var sensorId = first.SensorId;
+
+//    using (dc)
+//    {
+//        var sensorHistoryData = new SensorHistoryData()
+//                                    {
+//                                        SensorId = sensorId,
+//                                        DataText = dataText,
+//                                        DataNumeric = dataNumeric,
+//                                        SampledDT = sampleDt,
+//                                        InsertedDT = DateTime.Now
+//                                    };
+//        dc.Add(sensorHistoryData);
+//        dc.SaveChanges();
+//    }
+
+//}
+//else
+//{
+//    //TODO: Implementirati prikaz greške "
+//    //WebRequestMethods.Http.ResponseWrite(String.Format("Sensor with code {0} does not exist!"),
+//    //                                     sensorCode);
+
+//}
+
+
+//        //Snimanje u Entities modelu
+//        //using (var entityModel = new HistoricalDBEntities())
+//        //{
+//        //    var sensorHistoryData = new SensorHistoryData()
+//        //    {
+//        //        SensorId = sensor,
+//        //        DataText = dataText,
+//        //        DataNumeric = dataNumeric,
+//        //        SampledDT = sampleDt,
+//        //        InsertedDT = DateTime.Now,
+//        //    };
+//        //    entityModel.SensorHistoryData.Add(sensorHistoryData);
+//        //    entityModel.SaveChanges();
+//        //}
+//    }
+

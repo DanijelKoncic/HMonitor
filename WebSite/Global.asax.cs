@@ -50,11 +50,11 @@ namespace WebSite
                                                           .WithIdentity("Trigger očitanja vremena", "Grupa1")
                                                           .StartAt(startTime)
                                                           .WithSimpleSchedule(
-                                                              x => x.WithIntervalInMinutes(15).RepeatForever())
+                                                              x => x.WithIntervalInMinutes(10).RepeatForever())
                                                           .Build();
 
             ////Ako se želi pokrenuti scheduler donja linija mora biti odkomentirana
-            //DateTimeOffset? ft = sched.ScheduleJob(job, trigger);
+            DateTimeOffset? ft = sched.ScheduleJob(job, trigger);
         }
 
         void Application_End(object sender, EventArgs e)
