@@ -37,8 +37,8 @@
 *.nupkg
 
 # ReSharper is a .NET coding add-in
-_ReReSharper.HMonitor/
-_ReReSharper.HMonitor*
+_ReReSharper.HMonitor
+_ReReSharper.HMonitor*/
 _ReSharper*/
 _ReSharper*
 _dotCover*
