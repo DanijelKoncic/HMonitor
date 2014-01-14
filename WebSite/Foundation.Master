@@ -8,9 +8,9 @@
     <title></title>
     <link href="~/Styles/foundation.css" rel="stylesheet" type="text/css" /> 
     <link href="~/Styles/app.css" rel="stylesheet" type="text/css" />
-    <!--<asp:PlaceHolder ID="PlaceHolder1" runat="server">        
+    <asp:PlaceHolder ID="PlaceHolder1" runat="server">        
         <script src="<%: ResolveUrl("~/Scripts/modernizr-2.5.3.js") %>"></script>
-    </asp:PlaceHolder> -->
+    </asp:PlaceHolder>
 
     <script src="~/Scripts/modernizr.js"></script> 
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -35,13 +35,16 @@
                 <section class="top-bar-section">
                 <!-- Right Nav Section -->
                 <ul class="right">
-                    <li class=""><a href="#">Login</a></li>
-                <!--    <li class="has-dropdown">
-                    <a href="#">Right Button with Dropdown</a>
+                    <li class="divider"></li>
+                    <li class="has-dropdown">
+                    <a href="#">Menu</a>
                     <ul class="dropdown">
-                        <li><a href="#">First link in dropdown</a></li>
+                        <li><a href="DispWeather.aspx">Weather Grid</a></li>
+                        <li><a href="GraphWeather.aspx">Weather Graph</a></li>
                     </ul>
-                    </li> -->
+                    </li>
+                    <li class="divider"></li>
+                    <li class=""><a href="#">Login</a></li>
                 </ul>
 
                 <!-- Left Nav Section -->

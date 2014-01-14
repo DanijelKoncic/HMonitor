@@ -17,7 +17,7 @@
         <telerik:OpenAccessLinqDataSource ID="OpenAccessLinqDataSource1" runat="server" ContextTypeName="Website.Data.HMonitorData" EntityTypeName="" ResourceSetName="SensorHistoryDatas">
         </telerik:OpenAccessLinqDataSource>
 
-        <asp:GridView ID="GridView1" runat="server" DataSourceID="OpenAccessLinqDataSource1" CssClass="mGrid" AutoGenerateColumns="False" DataKeyNames="SensorHistoryDataId">
+        <asp:GridView ID="GridView1" runat="server" DataSourceID="OpenAccessLinqDataSource1" CssClass="mGrid" AutoGenerateColumns="False" DataKeyNames="SensorHistoryDataId" AllowPaging="True" PageSize="50">
             <Columns>
                 <asp:BoundField DataField="SensorHistoryDataId" HeaderText="SensorHistoryDataId" InsertVisible="False" ReadOnly="True" SortExpression="SensorHistoryDataId" />
                 <asp:BoundField DataField="SensorId" HeaderText="SensorId" SortExpression="SensorId" />
@@ -27,7 +27,6 @@
                 <asp:BoundField DataField="InsertedDT" HeaderText="InsertedDT" SortExpression="InsertedDT" />
             </Columns>
         </asp:GridView>
-        
 
     </div>
 
