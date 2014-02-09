@@ -6,74 +6,98 @@
 <head runat="server">
     <meta charset="utf-8" />
     <title></title>
+    
+    <!-- STILOVI -->
     <link href="~/Styles/foundation.css" rel="stylesheet" type="text/css" /> 
     <link href="~/Styles/app.css" rel="stylesheet" type="text/css" />
-    <asp:PlaceHolder ID="PlaceHolder1" runat="server">        
-        <script src="<%: ResolveUrl("~/Scripts/modernizr-2.5.3.js") %>"></script>
-    </asp:PlaceHolder>
+    <link href="Styles/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+    <!-- STILOVI - privremena dorada
+    <style type="text/css">
+        div.ui-datepicker {
+            width: auto;
+        }
+        div.ui-datepicker, .ui-datepicker td {
+            font-size: 12px;
+        }
+        div.ui-datepicker-title {
+            font-size: 1em;
+            color: red;
+        }
+        div.ui-datepicker-calendar tr th{
+                        font-size: 10px;
+        }
+    </style> -->
 
-    <script src="~/Scripts/modernizr.js"></script> 
+    <!-- SKRIPTE -->
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/Highcharts-3.0.9/js/highcharts.js"></script>    
+    <script src="Scripts/jquery-ui-1.10.4.custom.min.js"></script>
+    
+
+ 
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
     <meta name="viewport" content="width=device-width" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
-
 </head>
+
 <body>
     <form id="form1" runat="server">
+        <header>
+            <!-- NAVIGACIJA -->
+            <div class="contain-to-grid fixed">
+                <nav class="top-bar" data-topbar="">
 
-    <header>
-        <!-- NAVIGACIJA -->
-        <div class="contain-to-grid fixed">
-            <nav class="top-bar" data-topbar="">
-
-                <ul class="title-area">
-                    <li class="name">
-                        <h1><a href="#">HMonitor</a></h1>
-                    </li>
-                </ul>
-
-                <section class="top-bar-section">
-                <!-- Right Nav Section -->
-                <ul class="right">
-                    <li class="divider"></li>
-                    <li class="has-dropdown">
-                    <a href="#">Menu</a>
-                    <ul class="dropdown">
-                        <li><a href="DispWeather.aspx">Weather Grid</a></li>
-                        <li><a href="GraphWeather.aspx">Weather Graph</a></li>
+                    <ul class="title-area">
+                        <li class="name">
+                            <h1><a href="#">HMonitor</a></h1>
+                        </li>
                     </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li class=""><a href="#">Login</a></li>
-                </ul>
 
-                <!-- Left Nav Section -->
-                <!-- <ul class="left">
-                  <li><a href="#">Left Nav Button</a></li>
-                </ul> -->
-              </section>   
+                    <section class="top-bar-section">
+                        <!-- Right Nav Section -->
+                        <ul class="right">
+                            <li class="divider"></li>
+                            <li class="has-dropdown">
+                            <a href="#">Menu</a>
+                            <ul class="dropdown">
+                                <li><a href="DispWeather.aspx">Weather Grid</a></li>
+                                <li><a href="GraphWeather1.aspx">Weather Graph</a></li>
+                            </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li class=""><a href="#">Login</a></li>
+                        </ul>
 
-            </nav>
-        </div>        
-    </header>      
-    <div style="background-color: #f5f5f5;">
-            <div class="row" style="background-color: #f5f5f5; min-height: 800px;">
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    </asp:ContentPlaceHolder>                    
-            </div>
-    </div>
-    <footer>
-        <div class="content-wrapper">
-            <div class="text-center">
-                <p>&copy; <%: DateTime.Now.Year %> - HMonitor Applikaccija</p>
-            </div>
+                        <!-- Left Nav Section -->
+                        <!-- <ul class="left">
+                          <li><a href="#">Left Nav Button</a></li>
+                        </ul> -->
+                  </section>   
+
+                </nav>
+            </div>        
+        </header>  
+          
+        <div style="background-color: #f5f5f5; padding-top: 15px; min-height: 800px; top: 45px;">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>                    
         </div>
-    </footer>
+
+        <footer>
+            <div class="content-wrapper">
+                <div class="text-center">
+                    <hr/>
+                    <p>&copy; <%: DateTime.Now.Year %> - HMonitor Applikacija</p>
+                </div>
+            </div>
+        </footer>
     </form>
     
-    <!-- Included JS Files (Uncompressed) -->
-    <script src="/Scripts/jquery.js"></script>
+    <!-- Included JS Files (Uncompressed) 
     <script src="/Scripts/foundation/foundation.js"></script>
+    <script src="/Scripts/modernizr.js"></script>
+
 
     <script src="/Scripts/foundation/foundation.abide.js"></script>
     <script src="/Scripts/foundation/foundation.accordion.js"></script>
@@ -89,10 +113,13 @@
     <script src="/Scripts/foundation/foundation.tab.js"></script>
     <script src="/Scripts/foundation/foundation.tooltip.js"></script>
     <script src="/Scripts/foundation/foundation.topbar.js"></script>
-    <script src="/Scripts/foundation/jquery.cookie.js"></script>
+    <script src="/Scripts/foundation/jquery.cookie.js"></script>-->
+    
+
 
     <!-- Included JS Files (Compressed) -->
-    <!-- <script src="/Scripts/foundation.min.js"></script> -->
+    <script src="/Scripts/foundation.min.js"></script>
+    <script src="/Scripts/modernizr.js"></script>
 
     <script type="text/javascript">
         $(document).foundation();

@@ -30,9 +30,9 @@ namespace WebSite
                 lblTemperaturaC.Text = string.Format("{0} {1}", "Trenutna temperatura (C):", currentWeather.temperaturaC);
 
                 //Snimi temperaturu
-                currentWeather.SaveCurrentWeather("WUTEMP01", null, currentWeather.temperaturaC, currentWeather.observation_time_rfc822);
+                //currentWeather.SaveCurrentWeather("WUTEMP01", null, currentWeather.temperaturaC, currentWeather.observation_time_rfc822);
                 //Snimi vlagu
-                currentWeather.SaveCurrentWeather("WUHUMI01", null, currentWeather.relative_humidity, currentWeather.observation_time_rfc822);
+                //currentWeather.SaveCurrentWeather("WUHUMI01", null, currentWeather.relative_humidity, currentWeather.observation_time_rfc822);
                 
                 GridView1.DataBind();
                 //var proba = Convert.ToDateTime(currentWeather.observation_time_rfc822);

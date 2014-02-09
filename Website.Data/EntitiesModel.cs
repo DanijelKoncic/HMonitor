@@ -24,7 +24,7 @@ namespace Website.Data
 {
 	public partial class HMonitorData : OpenAccessContext, IHMonitorDataUnitOfWork
 	{
-		private static string connectionStringName = @"HistoricalDBConnection";
+		private static string connectionStringName = @"HMonitorDataConnection";
 			
 		private static BackendConfiguration backend = GetBackendConfiguration();
 				
@@ -77,8 +77,8 @@ namespace Website.Data
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
-			backend.Backend = "SqlCe";
-			backend.ProviderName = "Microsoft.SqlServerCe.Client.3.5";
+			backend.Backend = "MsSql";
+			backend.ProviderName = "System.Data.SqlClient";
 			return backend;
 		}
 	}
