@@ -4,26 +4,37 @@
     <%--    <script src="Scripts/Highcharts-3.0.9/js/themes/dark-blue.js"></script>  --%>  
     
     <script type="text/javascript">
+        //$(function () {
+        //    $("[id$='_txtDate']").datepicker({
+        //        showButtonPanel: true,
+        //        dateFormat: "dd.mm.yy",
+        //        beforeShow: function ()
+        //        {
+        //            $(".ui-datepicker").css('font-size', 12);
+        //        }
+        //    });
+        //});
+
         $(function () {
-            $("[id$='_txtDate']").datepicker({
+            $("[id$='_TextBox1']").datepicker({
                 showButtonPanel: true,
                 dateFormat: "dd.mm.yy",
-                beforeShow: function ()
-                {
-                    $(".ui-datepicker").css('font-size', 12);
+                beforeShow: function () {
+                    $(".ui-datepicker").css('font-size', 10);
                 }
             });
         });
 
-        $(function() {
-            $("[id$='datepicker_container']").datepicker({
-                showButtonPanel: true,
-                dateFormat: "dd.mm.yy"
+
+        //$(function() {
+        //    $("[id$='datepicker_container']").datepicker({
+        //        showButtonPanel: true,
+        //        dateFormat: "dd.mm.yy"
                 //beforeShow: function() {
                 //    $(".ui-datepicker").css('font-size', 12);
                 //}
-            });
-        });
+        //    });
+        //});
 
                 <%--        $("#'<%=txtName.ClientID %>'");   
             $('#<%= DateTextBox.ClientID %>').attachDatepicker(); 
@@ -41,22 +52,24 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row">
-        <div class="large-10 columns">
-            <h4 style="color:black">Grafički prikaz temperature</h4>  
 
-        </div>
-        <div class="large-2 columns">
-            <asp:TextBox ID="TextBox1" runat="server" Text="Odaberi datum" AutoPostBack="True" OnTextChanged="txtDate_TextChanged" />
-        </div>
-        <hr/>
-    </div>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>    
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" >  
+        <ContentTemplate>     
+    
+            <div class="row">
+                <div class="large-10 columns">
+                    <h4 style="color:black">Grafički prikaz temperature</h4>  
+
+                </div>
+                <div class="large-2 columns">
+                    <asp:TextBox ID="TextBox1" runat="server" Text="Odaberi datum" AutoPostBack="True" OnTextChanged="TextBox1_TextChanged" />
+                </div>
+                <hr/>
+            </div>
             
-    <div class="row">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>    
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" AssociatedUpdatePanelID="UpdatePanel1">  
-            <ContentTemplate>       
-                <div class="large-9 columns">
+            <div class="row">
+                <div class="large-12 columns">
                     <div class="panel radius" style="background-color: #FFFFFF;">
                         <asp:Literal ID="ltrChart" runat="server"></asp:Literal>
                         <div id="chart_container_new"></div>                        
@@ -65,7 +78,7 @@
                     </div>
                 </div>
 
-                <div class="large-3 columns">
+<%--                <div class="large-3 columns">
                     <div class="row">
                         <div id="datepicker_container" class="large-12 columns">
                         </div>
@@ -82,36 +95,51 @@
                             <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
                         </div>   
                     </div>
-                </div>
-            </ContentTemplate>
+                </div>--%>
+            </div>
+        
+        </ContentTemplate>
 
-        </asp:UpdatePanel>
-        <asp:UpdateProgress ID="UpdateProgress1" runat="server">
-            <ProgressTemplate>
-                <div style="position: fixed; text-align: center; height: 100%; width: 100%; top: 0; right: 0; left: 0; z-index: 9999999; background-color: #000000; opacity: 0.7;">
-                    <asp:Image ID="imgUpdateProgress" runat="server" ImageUrl="~/Content/Images/ajax_loader-2.gif" AlternateText="Loading ..." ToolTip="Loading ..." style="padding: 10px;position:fixed;top:45%;left:50%;" />
-            </ProgressTemplate>
-        </asp:UpdateProgress>
-    </div>
-<script type="text/javascript">
+    </asp:UpdatePanel>
+    <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+        <ProgressTemplate>
+            <div style="position: fixed; text-align: center; height: 100%; width: 100%; top: 0; right: 0; left: 0; z-index: 9999999; background-color: #000000; opacity: 0.7;">
+                <asp:Image ID="imgUpdateProgress" runat="server" ImageUrl="~/Content/Images/ajax_loader-2.gif" AlternateText="Loading ..." ToolTip="Loading ..." style="padding: 10px;position:fixed;top:45%;left:50%;" />
+        </ProgressTemplate>
+    </asp:UpdateProgress>
+
+    <script type="text/javascript">
  
-    //Re-bind for callbacks
-    var prm = Sys.WebForms.PageRequestManager.getInstance();
+        //Re-bind for callbacks
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
 
-    prm.add_endRequest(function () {
-        nacrtajgraf();
-    });
+        prm.add_endRequest(function () {
+            window.nacrtajgraf();
+        });
     
-    prm.add_endRequest(function () {
-        $(function () {
-            $("[id$='_txtDate']").datepicker({
-                showButtonPanel: true,
-                dateFormat: "dd.mm.yy",
-                beforeShow: function () {
-                    $(".ui-datepicker").css('font-size', 12);
-                }
+        //prm.add_endRequest(function () {
+        //    $(function () {
+        //        $("[id$='_txtDate']").datepicker({
+        //            showButtonPanel: true,
+        //            dateFormat: "dd.mm.yy",
+        //            beforeShow: function () {
+        //                $(".ui-datepicker").css('font-size', 12);
+        //            }
+        //        });
+        //    });
+        //});
+        
+        prm.add_endRequest(function () {
+            $(function () {
+                $("[id$='_TextBox1']").datepicker({
+                    showButtonPanel: true,
+                    dateFormat: "dd.mm.yy",
+                    beforeShow: function () {
+                        $(".ui-datepicker").css('font-size', 10);
+                    }
+                });
             });
         });
-    });
-</script>
+    
+    </script>
 </asp:Content>

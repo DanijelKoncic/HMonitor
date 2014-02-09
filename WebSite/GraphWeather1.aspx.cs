@@ -21,7 +21,7 @@ namespace WebSite
         {
             if (!IsPostBack)
             {
-                txtDate.Text = DateTime.Now.AddDays(0).ToShortDateString();
+                TextBox1.Text = DateTime.Now.AddDays(0).ToShortDateString();
                 //Calendar1.SelectedDate = DateTime.Now;
                 //PrepareChart(DateTime.Now.AddDays(-1), "WUTEMP__01");
                 //PrepareChart(DateTime.Now.AddDays(-7), "WUTEMP__01", "WUHUMIDI01");
@@ -187,14 +187,21 @@ namespace WebSite
             }
         }
 
-        protected void txtDate_TextChanged(object sender, EventArgs e)
-        {
-            PrepareChart(Convert.ToDateTime(txtDate.Text), "WUTEMP__01", "WUHUMIDI01");
-        }
+        //protected void txtDate_TextChanged(object sender, EventArgs e)
+        //{
+        //    PrepareChart(Convert.ToDateTime(txtDate.Text), "WUTEMP__01", "WUHUMIDI01");
+        //    Label1.Text = "Refreshed at: " + DateTime.Now.ToString();
+        //}
 
-        protected void Button1_Click(object sender, EventArgs e)
+        //protected void Button1_Click(object sender, EventArgs e)
+        //{
+        //    PrepareChart(Convert.ToDateTime(txtDate.Text), "WUTEMP__01", "WUHUMIDI01");
+        //    Label1.Text = "Refreshed at: " + DateTime.Now.ToString();
+        //}
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
-            PrepareChart(Convert.ToDateTime(txtDate.Text), "WUTEMP__01", "WUHUMIDI01");
+            PrepareChart(Convert.ToDateTime(TextBox1.Text), "WUTEMP__01", "WUHUMIDI01");
             Label1.Text = "Refreshed at: " + DateTime.Now.ToString();
         }
 

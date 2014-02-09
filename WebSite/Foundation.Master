@@ -88,7 +88,7 @@
             <div class="content-wrapper">
                 <div class="text-center">
                     <hr/>
-                    <p>&copy; <%: DateTime.Now.Year %> - HMonitor Applikacija</p>
+                    <p>&copy; <%: DateTime.Now.Year %> - HMonitor Aplikacija</p>
                 </div>
             </div>
         </footer>
