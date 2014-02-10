@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Foundation.Master" AutoEventWireup="true" CodeBehind="GraphWeather1.aspx.cs" Inherits="WebSite.GraphWeather1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <%--    <script src="Scripts/Highcharts-3.0.9/js/themes/dark-blue.js"></script>  --%>  
+        <script src="Scripts/Highcharts-3.0.9/js/themes/grid.js"></script>    
     
     <script type="text/javascript">
         //$(function () {
@@ -18,10 +18,10 @@
         $(function () {
             $("[id$='_TextBox1']").datepicker({
                 showButtonPanel: true,
-                dateFormat: "dd.mm.yy",
-                beforeShow: function () {
-                    $(".ui-datepicker").css('font-size', 10);
-                }
+                dateFormat: "dd.mm.yy"      //,
+                //beforeShow: function () {
+                //    $(".ui-datepicker").css('font-size', 10);
+                //}
             });
         });
 
@@ -30,9 +30,20 @@
         //    $("[id$='datepicker_container']").datepicker({
         //        showButtonPanel: true,
         //        dateFormat: "dd.mm.yy"
-                //beforeShow: function() {
-                //    $(".ui-datepicker").css('font-size', 12);
-                //}
+        //        //beforeShow: function() {
+        //        //    $(".ui-datepicker").css('font-size', 12);
+        //        //}
+        //    });
+        //});
+        
+
+        //$(function () {
+        //    $("[id$='datepicker_container1']").datepicker({
+        //        showButtonPanel: true,
+        //        dateFormat: "dd.mm.yy"
+        //        //beforeShow: function() {
+        //        //    $(".ui-datepicker").css('font-size', 12);
+        //        //}
         //    });
         //});
 
@@ -69,21 +80,24 @@
             </div>
             
             <div class="row">
-                <div class="large-12 columns">
+                <div class="large-10 columns">
                     <div class="panel radius" style="background-color: #FFFFFF;">
                         <asp:Literal ID="ltrChart" runat="server"></asp:Literal>
                         <div id="chart_container_new"></div>                        
                         
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                        
                     </div>
                 </div>
 
-<%--                <div class="large-3 columns">
+                <div class="large-2 columns">
                     <div class="row">
-                        <div id="datepicker_container" class="large-12 columns">
+                        <div class="panel radius" style="background-color: #FFFFFF;">
                         </div>
+
+<%--                        <div id="datepicker_container" class="large-12 columns">
+                        </div>--%>
                         
-                        <div class="large-12 columns">
+                        <%--<div class="large-12 columns">
                             <asp:Label ID="txtLabel" runat="server" Text="Datum izvještaja" AssociatedControlID="txtDate"></asp:Label>
                         </div>
                         
@@ -93,11 +107,16 @@
                         
                         <div class="large-12 columns">
                             <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
-                        </div>   
+                        </div>  --%> 
                     </div>
-                </div>--%>
+                </div>
+                <asp:Label ID="Label1" runat="server" Text="Label" ></asp:Label>
             </div>
         
+         
+            
+            
+
         </ContentTemplate>
 
     </asp:UpdatePanel>

@@ -5,28 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta charset="utf-8" />
-    <title></title>
+    <title>HMonitor</title>
     
     <!-- STILOVI -->
     <link href="~/Styles/foundation.css" rel="stylesheet" type="text/css" /> 
     <link href="~/Styles/app.css" rel="stylesheet" type="text/css" />
-    <link href="Styles/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
-    <!-- STILOVI - privremena dorada
-    <style type="text/css">
-        div.ui-datepicker {
-            width: auto;
-        }
-        div.ui-datepicker, .ui-datepicker td {
-            font-size: 12px;
-        }
-        div.ui-datepicker-title {
-            font-size: 1em;
-            color: red;
-        }
-        div.ui-datepicker-calendar tr th{
-                        font-size: 10px;
-        }
-    </style> -->
+    <link href="Styles/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" type="text/css"/>
 
     <!-- SKRIPTE -->
     <script src="Scripts/jquery.js"></script>
