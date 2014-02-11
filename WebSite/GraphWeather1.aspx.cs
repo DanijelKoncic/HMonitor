@@ -31,9 +31,6 @@ namespace WebSite
 
             var dc = HMonitorDataContext;
 
-            //var graphListaSenzora = dc.SensorHistoryDatas.Where(s => s.InsertedDT > Calendar1.SelectedDate.Date
-            //                                        && s.InsertedDT < Calendar1.SelectedDate.AddDays(1).Date
-            //                                        && s.SensorId == ConvertSafe.ToInt32(1)).ToList();
             try
             {
                 int sensorId = dc.Sensors.Single(s => s.Code == _sensorName).SensorId;
@@ -47,20 +44,18 @@ namespace WebSite
                                             ).OrderBy(o => o.SensorHistoryDataId).ToList();
 
                 //Dohvati podatke iz Liste
-                //s.InsertedDT.Value.ToShortTimeString()
-                //var kategorije = graphListaSenzora.Where(g => g.SensorId == sensorID).Select(g => g.SampledDT.Value.ToShortTimeString()).ToList();
-                var kategorije = graphListaSenzora.Where(g => g.SensorId == sensorId).Select(g => g.SampledDT.Value.ToShortTimeString());
-                var podaci = graphListaSenzora.Where(s => s.SensorId == sensorId).Select(s => s.DataNumeric);
-                var podaci1 = graphListaSenzora.Where(s => s.SensorId == sensorId1).Select(s => s.DataNumeric);
+                var kategorije = graphListaSenzora.Where(g => g.SensorId == sensorId).Select(g => g.SampledDT.Value.ToShortTimeString()).ToList();
+                var podaci = graphListaSenzora.Where(s => s.SensorId == sensorId).Select(s => s.DataNumeric).ToList();
+                var podaci1 = graphListaSenzora.Where(s => s.SensorId == sensorId1).Select(s => s.DataNumeric).ToList();
 
                 //Kreiraj Serije
                 Series temperatura = new Series();
                 temperatura.Data = new Data(new object[]
                                                 {
-                                                    podaci.ToArray()
+                                                    podaci.ToArray(),
                                                 });
                 temperatura.Name = "Temperatura";
-                temperatura.Type = ChartTypes.Line;
+                temperatura.Type = ChartTypes.Spline;
                 temperatura.YAxis = "0";
 
                 //Kreiraj Serije
@@ -70,7 +65,7 @@ namespace WebSite
                                                     podaci1.ToArray()
                                                 });
                 vlaga.Name = "Vlaga";
-                vlaga.Type = ChartTypes.Line;
+                vlaga.Type = ChartTypes.Spline;
                 vlaga.YAxis = "1";
 
                 //
@@ -107,7 +102,10 @@ namespace WebSite
                             }
                     })
                     .SetSeries(series)
-                    //.SetTooltip(new Tooltip{ValueSuffix = "°C"})
+                    .SetTooltip(new Tooltip
+                                    {
+                                        Shared = true
+                                    })
                     .SetLegend(new Legend
                     {
                         Align = HorizontalAligns.Left,
@@ -118,27 +116,12 @@ namespace WebSite
                         BorderWidth = 0
                     });
 
-                //TODO: Riješiti ovaj tweak
+
                 var output = chart.ToHtmlString();
-                //var output1 = output.Replace("[[", "[");
-                //var output2 = output1.Replace("]]", "]");
-                
-                System.Text.StringBuilder sb1 = new System.Text.StringBuilder();
-                sb1.Append(output);
-                sb1.Replace("<div id='chart_container'></div>\r\n","");
-                sb1.Replace("[[", "[");
-                sb1.Replace("]]", "]");
-                sb1.Replace("chart_container", "chart_container_new");
-                sb1.Replace("$(document).ready(function() {", "function nacrtajgraf() {");
-                sb1.Replace("<script type='text/javascript'>\r\n", "");
-                sb1.Replace("</script>\r\n", "");
-                sb1.Replace("\t});\r\n});\r\n", "\t});\r\n};\r\n");
-                var output1 = sb1.ToString();
 
-                ScriptManager.RegisterStartupScript(ltrChart, ltrChart.GetType(), "scriptname", output1, true);
-                //ltrChart.Text = sb1.ToString();
+                //Registriraj skriptu
+                ScriptManager.RegisterStartupScript(ltrChart, ltrChart.GetType(), "scriptname", TidyJavaScript(output, "chart_container_new"), true);
                 Label1.Text = "Refreshed at: " + DateTime.Now.ToString();
-
             }
             catch (Exception)
             {
@@ -146,29 +129,29 @@ namespace WebSite
             }
         }
 
-        //protected void txtDate_TextChanged(object sender, EventArgs e)
-        //{
-        //    PrepareChart(Convert.ToDateTime(txtDate.Text), "WUTEMP__01", "WUHUMIDI01");
-        //    Label1.Text = "Refreshed at: " + DateTime.Now.ToString();
-        //}
-
-        //protected void Button1_Click(object sender, EventArgs e)
-        //{
-        //    PrepareChart(Convert.ToDateTime(txtDate.Text), "WUTEMP__01", "WUHUMIDI01");
-        //    Label1.Text = "Refreshed at: " + DateTime.Now.ToString();
-        //}
+        private static string TidyJavaScript(string output, string outputContainer)
+        {
+            //TODO: Nekako bolje riješiti ovaj tweak
+            var sb1 = new System.Text.StringBuilder();
+            sb1.Append(output);
+            sb1.Replace("<div id='chart_container'></div>\r\n", "");
+            sb1.Replace("[[", "[");
+            sb1.Replace("]]", "]");
+            sb1.Replace("chart_container", outputContainer);
+            sb1.Replace("$(document).ready(function() {", "function nacrtajgraf() {");
+            sb1.Replace("<script type='text/javascript'>\r\n", "");
+            sb1.Replace("</script>\r\n", "");
+            sb1.Replace("\t});\r\n});\r\n", "\t});\r\n};\r\n");
+            var output1 = sb1.ToString();
+            return output1;
+        }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
             PrepareChart(Convert.ToDateTime(TextBox1.Text), "WUTEMP__01", "WUHUMIDI01");
             Label1.Text = "Refreshed at: " + DateTime.Now.ToString();
         }
-
-
-
     }
-
-
 }
 
 
