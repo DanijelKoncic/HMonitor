@@ -69,3 +69,4 @@ Desktop.ini
 *.sln.cache
 packages
 /_ReSharper.HMonitor
+/TestResults
